@@ -25,7 +25,13 @@ post '/setname' do
 end
 
 get '/setname_callback' do
-	access_token = session[:oauth_request_token].get_access_token(:oauth_verifier => params[:oauth_verifier])
+	begin
+		access_token = session[:oauth_request_token].get_access_token(:oauth_verifier => params[:oauth_verifier])
+	rescue OAuth::Unauthorized => e
+		puts e.backtrace
+		redirect("/#cancelled")
+		return
+	end
 	client = Twitter::REST::Client.new do |config|
 		config.consumer_key = API_KEY
 		config.consumer_secret = API_SECRET

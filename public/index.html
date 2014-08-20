@@ -1,6 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Fancy Twitter usernames</title>
 <link rel="stylesheet" href="https://abs.twimg.com/a/1408032633/css/t1/twitter_gotham_core.bundle.css">
 <link rel="stylesheet" href="https://abs.twimg.com/a/1408032633/css/t1/twitter_more_1.bundle.css">
@@ -22,10 +23,16 @@ Please enable JavaScript.
 Successfully set your username! Go check your Twitter profile.
 </div>
 </div>
+<div id="cancelled" style="display: none" class="Banner">
+<div class="flex-module">
+Aww, you cancelled the authentication request :( Please choose "Authorize App" on the "Authorize Fancy names to use your account?" page
+for this application to work.
+</div>
+</div>
 <div>
 <form method="POST" action="/setname">
 Left: <input id="left-name"> Right: <input id="right-name">
-<span id="remaining-chars" class="tweet-counter"></span><input type="submit" value="Save" id="submit-button">
+<span id="remaining-chars" class="tweet-counter"></span><input type="submit" value="Save" id="submit-button" class="primary-btn">
 <input type="hidden" name="name" value="" id="name-input">
 </form>
 </div>
@@ -184,6 +191,16 @@ There was really no reason to, you just really wanted a bread fence.</p>
 </div>
 <!-- end of preview -->
 </div>
+
+<div>
+<br>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fancyname.herokuapp.com" data-text="Check out my fancy Twitter name from" data-related="zhuowei">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br>
+<a href="https://github.com/zhuowei/FancyTwitterNames">Source on GitHub</a>
+<br>
+</div>
+
 <div class="Footer-item">Made by <a href="https://twitter.com/zhuowei">@zhuowei</a>. I didn't discover this trick, though.
 The names-on-both-sides trick is shamelessly copied from <a href="https://twitter.com/amazingant">@amazingant</a> and
 <a href="https://twitter.com/0xabad1dea">@0xabad1dea</a>
