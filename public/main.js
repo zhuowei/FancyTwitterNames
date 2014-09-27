@@ -4,14 +4,17 @@ var nameDisplay, nameInput;
 var remainingCharsDisplay;
 var maxLength = 20;
 var submitButton;
+var omitFinalCheckbox;
+var nameInteractionsDisplay;
 function inputHandler() {
 	var newName = leftName.value + String.fromCharCode(0x202e) + rightName.value.split("").reverse().join("") + 
-		String.fromCharCode(0x202d);
+		(omitFinalCheckbox.checked? "": String.fromCharCode(0x202d));
 	var isOK = newName.length <= maxLength;
 	remainingCharsDisplay.textContent = maxLength - newName.length;
 	remainingCharsDisplay.style.color = isOK? "": "red";
 	submitButton.disabled = !isOK;
 	nameDisplay.textContent = newName;
+	nameInteractionsDisplay.textContent = newName;
 	nameInput.value = newName;
 }
 function loadHandler() {
@@ -23,6 +26,9 @@ function loadHandler() {
 	nameDisplay = document.getElementsByClassName("ProfileTweet-fullname")[0];
 	remainingCharsDisplay = document.getElementById("remaining-chars");
 	submitButton = document.getElementById("submit-button");
+	omitFinalCheckbox = document.getElementById("omit-final");
+	omitFinalCheckbox.addEventListener("change", inputHandler);
+	nameInteractionsDisplay = document.getElementById("name-display-interactions");
 	inputHandler();
 	if (window.location.hash == "#success") {
 		document.getElementById("success").style.display = "";
